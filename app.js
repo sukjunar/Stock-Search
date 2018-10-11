@@ -1,23 +1,47 @@
-const stocks = ['FB', 'AAPL', 'TSLA', 'GOOG', 'MSFT'];
+const stocksList = ['FB', 'AAPL', 'TSLA', 'GOOG'];
+const favesList = [];
 
 const render = function () {
     $('.buttons').empty();
-    stocks.forEach(function (element) {
+    stocksList.forEach(function (element) {
         let newButton = $('<button>');
         newButton.addClass('stock');
         newButton.text(element);
         $('.buttons').append(newButton);
     })
 }
-render();
+
+const faveRender = function () {
+    $('.faveButtons').empty();
+    favesList.forEach(function (element) {
+        let newFaveButton = $('<button>');
+        newFaveButton.addClass('stock');
+        newFaveButton.text(element);
+        $('.faveButtons').append(newFaveButton);
+    })
+}
 
 const addButton = function (event) {
     event.preventDefault();
-    const stock = $('#input').val().trim().toUpperCase();
-    $(this).attr("id", "`${stock}`")
-
-    stocks.push(stock);
+    const stock = $('#input').val().toUpperCase();
+    stocksList.push(stock);
     $('#input').val('');
+    render();
+}
+
+const clearButton = function (event) {
+    event.preventDefault();
+    stocksList.splice(0, stocksList.length);
+    render();
+}
+
+const favoriteButton = function (event) {
+    event.preventDefault();
+    const fave = $('#input').val().trim().toUpperCase();
+
+    favesList.push(fave);
+    $('#input').val('');
+    faveRender();
 }
 
 const checkSymbol = function () {
@@ -29,18 +53,34 @@ const checkSymbol = function () {
         url: queryURL,
         method: 'GET'
     }).then(function (response) {
-        console.log(response)
-        console.log(response.logo)
-        console.log(response.logo.url)
-        console.log(response.company.CEO)
-
-        $(".logo").html(`<img src="${response.logo.url}" style="width:300px"/>`)
-        $(".companyName").text(`${response.company.companyName}`)
-        $(".ceoName").html(`<p>CEO: ${response.company.CEO}</p>`)
-        $(".news").append(`<h2><a href="${response.news[0].url}>${response.news[0].headline}</a></h2><p>${response.news[0].summary}</p><h2><a href="${response.news[1].url}>${response.news[1].headline}</a></h2><p>${response.news[1].summary}</p>`)
-
+        
+        // LOGO
+        $(".logo").html(`<img src="${response.logo.url}" style="width:250px"/>`);
+        
+        // Company Name
+        $(".companyName").html(`<h1>${response.company.companyName}</h1>`);
+        
+        // CEO
+        $(".ceoName").html(`<h2>CEO: ${response.company.CEO}</h2>`);
+        
+        // Price
+        $(".currentPrice").html(`<h2>Current Price: $${response.quote.latestPrice}</h2>`);
+        
+        // News
+        $(".news").empty();
+        $(".news").html(`<h2>News</h2>`);
+        for (let i = 0; i < response.news.length; i++) {
+            $(".news").append(`<h3><a href="${response.news[i].url}">${response.news[i].headline}</a></h3><time>${response.news[i].datetime}</time><p>${response.news[i].summary}</p>`)
+        }
     })
 }
 
+const randomFunction = function () {
+    console.log("it works?")
+}
+
+render();
 $('#submitButton').on('click', addButton);
-$('.stock').on('click', checkSymbol);
+$('#clearButton').on('click', clearButton);
+$('#favoriteButton').on('click', favoriteButton);
+$('button.stock').on('click', checkSymbol);

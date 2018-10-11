@@ -6,22 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iexTrading Search</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
     <!--NAV BAR-->
     <nav>
-        <div class="vertical-center">
-            <!--FORM FILL-->
+        <!--FORM FILL-->
+        <div>
             <form>
-                <input id="input" type="text" placeholder=" MSFT, GOOG, etc.">
+                <input id="input" type="text">
                 <input id="submitButton" type="submit" value="Submit">
-                <input id="favoriteButton" type="submit" value="Favorite">
+                <input id="clearButton" type="submit" value="Clear">
+                <input id="favoriteButton" type="submit" value="★">
             </form>
-            <div class="faveButtons"></div>
         </div>
+        <!-- FAVORITE BUTTON AREA -->
+        <p>Favorites</p><div class="faveButtons"></div>
     </nav>
 
     <!--SYMBOL BUTTON AREA-->
@@ -32,8 +33,8 @@
         <section class="logo"></section>
         <section class="companyName"></section>
         <section class="ceoName"></section>
+        <section class="currentPrice"></section>
         <section class="news"></section>
-        
     </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
