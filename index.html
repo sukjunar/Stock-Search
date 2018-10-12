@@ -6,24 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>iexTrading Search</title>
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 <body>
     <!--NAV BAR-->
     <nav>
+        <a href="index.html"> <img id="logo" src="icon.png" alt="logo" height="35" width="35"></a>
+        <p id="title"><a id="titleA" href="index.html">Stock Search</a></p>
         <!--FORM FILL-->
         <form>
             <input id="input" type="text">
             <input id="submitButton" type="submit" value="Submit">
             <input id="clearButton" type="submit" value="Clear">
-            <input id="favoriteButton" type="submit" value="★">
+            <input id="favoriteButton" type="submit" value="Favorite">
         </form>
         <!-- FAVORITE BUTTON AREA -->
-        Favorites<div class="faveButtons"></div>
     </nav>
 
     <!--SYMBOL BUTTON AREA-->
+    <p id="f">Favorites</p>
+    <div class="faveButtons"></div>
+    <p id="h">History</p>
     <div class="buttons"></div>
 
     <!--MAIN CONTENT AREA-->
@@ -32,6 +39,7 @@
         <section class="companyName"></section>
         <section class="ceoName"></section>
         <section class="currentPrice"></section>
+        <br />
         <section class="news"></section>
     </main>
 
