@@ -2,7 +2,7 @@
 
 ## Overview
 
-You're being tasked with creating a fully fleshed out, crypto currency web application for your client. This application will use the [iexTrading API](https://min-api.cryptocompare.com/) to make a dynamic web page that populates with crypto currency information of the user's choice. To finish this task, you must call the cryptoCurrency API and use JavaScript and jQuery to change the HTML of your site.
+You're being tasked with creating a fully fleshed out stock information web application for your client. This application will use the [iexTrading API](https://iextrading.com/developer/docs) to make a dynamic web page that populates with stock information based on the stock symbols that the user inputs. To finish this task, you must call the iexTrading API and use JavaScript and jQuery to change the HTML of your site.
 
 ## Before You Begin
 

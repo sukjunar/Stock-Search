@@ -83,4 +83,4 @@ render();
 $('#submitButton').on('click', addButton);
 $('#clearButton').on('click', clearButton);
 $('#favoriteButton').on('click', favoriteButton);
-$('button.stock').on('click', checkSymbol);
+$('.buttons').on('click', '.stock', checkSymbol);
