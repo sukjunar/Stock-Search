@@ -25,10 +25,16 @@ const faveRender = function () {
 const addButton = function (event) {
     event.preventDefault();
     const stock = $('#input').val().toUpperCase();
-    if (validationList.includes(stock)) { 
-        stocksList.push(stock);
+    if (validationList.includes(stock)) {
+        if (stocksList.includes(stock)) {
+            $('#input').val('');
+            $('#input').attr("placeholder", 'Already in the list')
+        }
+        else {
+            stocksList.push(stock);
+            $('#input').val('');
+        }
     }
-    $('#input').val('');
     render();
 }
 
@@ -42,9 +48,15 @@ const favoriteButton = function (event) {
     event.preventDefault();
     const fave = $('#input').val().trim().toUpperCase();
     if (validationList.includes(fave)) {
-        favesList.push(fave);
+        if (favesList.includes(fave)) {
+            $('#input').val('');
+            $('#input').attr("placeholder", 'Already in the list')
+        }
+        else {
+            favesList.push(fave);
+            $('#input').val('');
+        }
     }
-    $('#input').val('');
     faveRender();
 }
 
@@ -80,7 +92,8 @@ const checkSymbol = function () {
         $(".news").html(`<h3>News</h3>`);
         for (let i = 0; i < response.length; i++) {
             $(".news").append(`<h4><a href="${response[i].url}" target="_blank">${response[i].headline}</a></h4><time>${response[i].datetime}</time><summary>${response[i].summary}</summary><br />`)
-        }    })
+        }
+    })
 }
 
 const pullSymbols = function () {

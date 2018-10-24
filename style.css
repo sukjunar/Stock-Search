@@ -44,6 +44,11 @@ input#input:hover {
     transition: 0.1s;
 }
 
+#input::placeholder {
+    font-weight: bold;
+    color: #FF9999;
+}
+
 button {
     border-radius: 5px;
     height: 21px;
